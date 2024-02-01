@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 db_name= wordpressdb
 db_user= abelwb
