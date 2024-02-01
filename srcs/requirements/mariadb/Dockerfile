@@ -4,5 +4,9 @@ RUN apt update && apt upgrade -y
 RUN apt-get install mariadb-server -y
 
 COPY conf/50-server.cnf	/etc/mysql/mariadb.conf.d/50-server.cnf
+COPY tools/script.sh ./script.sh
 
-CMD [ "sleep", "infinity" ]
+RUN chmod +x script.sh && service mysql start && ./script.sh
+
+CMD [ "/usr/bin/mysqld_safe" ]
+# CMD [ "sleep", "infinity" ]
