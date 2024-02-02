@@ -13,6 +13,7 @@ RUN chown -R mysql:mysql /run/mysqld
 
 RUN chmod +x script.sh
 RUN service mariadb start
+RUN sleep 10
 RUN bash script.sh
 
 EXPOSE 3306
