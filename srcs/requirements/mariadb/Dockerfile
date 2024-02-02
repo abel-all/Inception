@@ -11,7 +11,7 @@ RUN apt-get install mariadb-server -y
 RUN mkdir -p /run/mysqld
 RUN chown -R mysql:mysql /run/mysqld
 
-COPY conf/50-server.cnf	/etc/mysql/mariadb.conf.d/50-server.cnf
+# COPY conf/50-server.cnf	/etc/mysql/mariadb.conf.d/50-server.cnf
 COPY tools/script.sh /root/script.sh
 
 EXPOSE 3306
