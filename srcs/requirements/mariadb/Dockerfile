@@ -10,7 +10,7 @@ COPY tools/script.sh .
 
 RUN chmod +x script.sh
 RUN service mariadb start
-RUN ./script.sh
+RUN bash script.sh
 
 EXPOSE 3306
 # CMD [ "/usr/bin/mysqld_safe" ]
