@@ -9,7 +9,7 @@ COPY conf/50-server.cnf	/etc/mysql/mariadb.conf.d/50-server.cnf
 COPY tools/script.sh .
 
 RUN chmod +x script.sh
-RUN service mysql start
+RUN service mariadb start
 RUN bash script.sh
 
 EXPOSE 3306
