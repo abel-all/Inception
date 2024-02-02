@@ -20,4 +20,4 @@ mysql -p12345 -e "FLUSH PRIVILEGES;"
 # Any subsequent tries to run queries this way will get access denied because lack of usr/pwd param
 
 # /usr/bin/mysqld_safe
-mysqld --user=mysql --console
+sleep infinity
