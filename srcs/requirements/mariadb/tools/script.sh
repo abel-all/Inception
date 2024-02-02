@@ -4,6 +4,9 @@ db_name=wordpressdb
 db_user=abelwb
 db_pwd=Abdessamad010203#
 
+service mariadb start
+
+sleep 5
 # Make sure that NOBODY can access the server without a password
 mysql -e "CREATE DATABASE IF NOT EXISTS $db_name ;"
 # Kill the anonymous users
