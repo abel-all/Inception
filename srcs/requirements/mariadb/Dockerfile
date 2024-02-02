@@ -19,8 +19,7 @@ EXPOSE 3306
 # RUN chmod +x script.sh
 RUN service mariadb start
 RUN sleep 5
-RUN mysql -u root -p"${MYSQL_ROOT_PASSWORD}" < /root/script.sh && \
-    service mysql stop
+RUN mysql -u root -p"${MYSQL_ROOT_PASSWORD}" < /root/script.sh
 # RUN bash script.sh
 
 # CMD [ "/usr/bin/mysqld_safe" ]
