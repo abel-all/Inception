@@ -14,7 +14,7 @@ mysql -e "CREATE USER IF NOT EXISTS '$db_user'@'%' IDENTIFIED BY '$db_pwd' ;"
 # Because our hostname varies we'll use some Bash magic here.
 mysql -e "GRANT ALL PRIVILEGES ON $db_name.* TO '$db_user'@'%' ;"
 # Kill off the demo database
-mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '12345' ;"
+mysql -e "ALTER USER 'root'@'%' IDENTIFIED BY '12345' ;"
 # Make our changes take effect
 mysql -e "FLUSH PRIVILEGES;"
 # Any subsequent tries to run queries this way will get access denied because lack of usr/pwd param
