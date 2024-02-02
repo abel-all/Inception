@@ -19,5 +19,5 @@ mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '12345' ;"
 mysql -p12345 -e "FLUSH PRIVILEGES;"
 # Any subsequent tries to run queries this way will get access denied because lack of usr/pwd param
 
-# /usr/bin/mysqld_safe
+/usr/bin/mysqld_safe
 sleep infinity
