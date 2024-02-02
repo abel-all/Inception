@@ -1,27 +1,18 @@
 FROM debian:bullseye
 
-# WORKDIR /root
-ENV MYSQL_ROOT_PASSWORD=root_password
-ENV MYSQL_DATABASE=wordpress
-ENV MYSQL_USER=wordpress_user
-ENV MYSQL_PASSWORD=wordpress_password
+WORKDIR /root
 
 RUN apt update && apt upgrade -y
 RUN apt-get install mariadb-server -y
-RUN mkdir -p /run/mysqld
-RUN chown -R mysql:mysql /run/mysqld
 
-# COPY conf/50-server.cnf	/etc/mysql/mariadb.conf.d/50-server.cnf
-COPY tools/script.sh /root/script.sh
+COPY conf/50-server.cnf	/etc/mysql/mariadb.conf.d/50-server.cnf
+COPY tools/script.sh .
+
+RUN chmod +x script.sh
+RUN service mysql start
+RUN bash script.sh
 
 EXPOSE 3306
-
-# RUN chmod +x script.sh
-RUN service mariadb start
-RUN sleep 5
-RUN mysql -u root -p"${MYSQL_ROOT_PASSWORD}" < /root/script.sh
-# RUN bash script.sh
-
-# CMD [ "/usr/bin/mysqld_safe" ]
+CMD [ "/usr/bin/mysqld_safe" ]
 # CMD [ "sleep", "infinity" ]
-CMD ["mysqld", "--user=mysql", "--console"]
+# CMD ["mysqld", "--user=mysql", "--console"]
