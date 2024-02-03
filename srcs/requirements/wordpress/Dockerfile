@@ -2,7 +2,7 @@ FROM debian:bullseye
 
 RUN apt update && apt upgrade -y
 # RUN apt-get install -y wget
-RUN apt install -y php-fpm php-mysql && apt install -y curl
+RUN apt install -y php-fpm7.3 php-mysql && apt install -y curl
 
 # RUN wget https://wordpress.org/latest.tar.gz -P /var/www
 # RUN cd /var/www && tar -xvf latest.tar.gz && rm latest.tar.gz
