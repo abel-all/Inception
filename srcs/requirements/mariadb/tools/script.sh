@@ -25,5 +25,6 @@ echo "user created successfully"
 # Make our changes take effect
 mysql -p12345 -e "FLUSH PRIVILEGES;"
 # Any subsequentt tries to run queries this way will get access denied because lack of usr/pwd param
+echo "dcdfdfdfdfdf"
 
 sleep infinity
