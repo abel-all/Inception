@@ -5,7 +5,9 @@ db_user=abelwb
 db_pwd=a123
 
 # mysqld_safe --skip-grant-tables --skip-syslog --skip-networking
-mysqld_safe
+# mysqld_safe
+service mariadb start
+# mariadb start
 echo "hello"
 # sleep 10
 # Kill off the demo database
@@ -15,11 +17,11 @@ echo "root password changed successfully"
 mysql -u root -e "CREATE DATABASE IF NOT EXISTS $db_name ;"
 echo "database created successfully"
 # Kill the anonymous users
-mysql -p 12345 -u root -e "CREATE USER IF NOT EXISTS $db_user@'%' IDENTIFIED BY '$db_pwd' ;"
+mysql -e "CREATE USER IF NOT EXISTS '$db_user'@'%' IDENTIFIED BY '$db_pwd' ;"
 # Because our hostname varies we'll use some Bash magic here.
-mysql -p 12345 -u root -e "GRANT ALL PRIVILEGES ON *.* TO $db_user@'%' ;"
+mysql -e "GRANT ALL PRIVILEGES ON *.* TO '$db_user'@'%' ;"
 # Make our changes take effect
-mysql -p 12345 -u root -e "FLUSH PRIVILEGES;"
+mysql -e "FLUSH PRIVILEGES;"
 # Any subsequentt tries to run queries this way will get access denied because lack of usr/pwd param
 
 sleep infinity
