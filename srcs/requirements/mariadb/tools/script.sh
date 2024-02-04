@@ -10,7 +10,9 @@ sleep 10
 # Kill off the demo database
 mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '12345' ;"
 # Make sure that NOBODY can access the server without a password
+echo "root password changed successfully"
 mysql -p12345 -e "CREATE DATABASE IF NOT EXISTS $db_name ;"
+echo "database created successfully"
 # Kill the anonymous users
 mysql -p12345 -e "CREATE USER IF NOT EXISTS '$db_user'@'%' IDENTIFIED BY '$db_pwd' ;"
 # Because our hostname varies we'll use some Bash magic here.
