@@ -1,13 +1,16 @@
+
+DOCKER_COMPOSE_FILE = srcs/docker-compose.yml
+
 all : build run
 
 build :
-	srcs/docker-compose build
+	docker-compose build
 
 run :
-	srcs/docker-compose up
+	docker-compose up
 
 stop :
-	srcs/docker-compose down
+	docker-compose down
 
 .phony : build run stop
 
