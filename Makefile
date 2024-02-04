@@ -1,13 +1,13 @@
 all : build run
 
 build :
-	docker-compose build
+	/srcs/docker-compose build
 
 run :
-	docker-compose up
+	/srcs/docker-compose up
 
 stop :
-	docker-compose down
+	/srcs/docker-compose down
 
 .phony : build run stop
 
