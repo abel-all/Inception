@@ -4,7 +4,7 @@ db_name=wordpressdb
 db_user=abelwb
 db_pwd=Abdessamad010203@
 
-mysqld_safe
+mysqld_safe --skip-grant-tables --skip-syslog --skip-networking
 
 sleep 15
 # Kill off the demo database
