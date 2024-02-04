@@ -1,5 +1,5 @@
 
-DOCKER_COMPOSE_FILE = srcs/docker-compose.yml
+DOCKER_COMPOSE_FILE := srcs/docker-compose.yml
 
 all : build run
 
