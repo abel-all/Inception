@@ -2,7 +2,7 @@
 
 db_name=wordpressdb
 db_user=abelwb
-db_pwd=Abdessamad010203#
+db_pwd=Abdessamad010203@
 
 service mariadb start
 

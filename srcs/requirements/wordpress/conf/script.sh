@@ -2,20 +2,20 @@
 
 db_name=wordpressdb
 db_user=abelwb
-db_pwd=Abdessamad010203#
+db_pwd=Abdessamad010203@
 
 DOMAIN_NAME=abel-all.42.fr
 WP_TITLE=abel-all
 WP_ADMIN_USR=admin
-WP_ADMIN_PWD=Abdessamad010203#
+WP_ADMIN_PWD=Abdessamad010203@
 WP_ADMIN_EMAIL=abel-all@1337.ma
 WP_USR=abel-all
 WP_EMAIL=abel-all@1337.ma
-WP_PWD=Abdessamad010203#
+WP_PWD=Abdessamad010203@
 
 # create directory to use in nginx container later and also to setup the wordpress conf
-mkdir /var/www/
-mkdir /var/www/html
+# mkdir /var/www/
+# mkdir /var/www/html
 
 cd /var/www/html
 

@@ -1,6 +1,3 @@
-
-# DOCKER_COMPOSE_FILE := srcs/docker-compose.yml
-# DOCKER_COMPOSE := docker-compose -f $(DOCKER_COMPOSE_FILE)
 all : build run
 
 build :
