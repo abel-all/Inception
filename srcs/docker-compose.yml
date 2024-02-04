@@ -18,7 +18,7 @@ volumes:
 
 networks:
  inception:
- driver: bridge
+  driver: bridge
 
 services:
  nginx:
@@ -37,13 +37,13 @@ services:
   container_name: wordpress
   build: ./requirements/wordpress/.
   volumes:
-  - wordpress:/var/www/html
+   - wordpress:/var/www/html
   networks:
-  - inception
+   - inception
   depends_on:
-  - mariadb
+   - mariadb
   env_file:
-  - .env
+   - .env
   restart: always
  mariadb:
   container_name: mariadb
