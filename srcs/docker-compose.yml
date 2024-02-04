@@ -8,7 +8,7 @@ volumes:
    o: bind
    type: none
    device: /home/abel-all/data/wordpress
- maria_db:
+ mariadb:
   name: mariadb
   driver: local
   driver_opts:
