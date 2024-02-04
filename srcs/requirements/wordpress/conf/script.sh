@@ -39,7 +39,7 @@ wp core download --allow-root
 mv /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
 
 # change the those lines in wp-config.php file to connect with database
-
+sleep 20
 #line 23
 sed -i -r "s/database/$db_name/1"   wp-config.php
 #line 26

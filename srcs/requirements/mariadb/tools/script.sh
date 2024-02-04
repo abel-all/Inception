@@ -6,7 +6,7 @@ db_pwd=Abdessamad010203@
 
 mysqld_safe --skip-grant-tables --skip-syslog --skip-networking
 
-sleep 15
+sleep 10
 # Kill off the demo database
 mysql -e "ALTER USER root@'localhost' IDENTIFIED BY '12345' ;"
 # Make sure that NOBODY can access the server without a password
