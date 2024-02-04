@@ -8,7 +8,7 @@ service mariadb start
 
 sleep 10
 # Kill off the demo database
-mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '12345' ;"
+# mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '12345' ;"
 # Make sure that NOBODY can access the server without a password
 echo "root password changed successfully"
 mysql -p12345 -e "CREATE DATABASE IF NOT EXISTS $db_name ;"
