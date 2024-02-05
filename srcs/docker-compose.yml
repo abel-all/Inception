@@ -50,8 +50,8 @@ services:
  mariadb:
   container_name: mariadb
   build: ./requirements/mariadb/.
-  ports:
-   - "3306:3306"
+  # ports:
+  #  - "3306:3306"
   volumes:
    - mariadb:/var/lib/mysql
   networks:
