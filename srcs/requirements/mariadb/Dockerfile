@@ -14,6 +14,6 @@ RUN chmod +x script.sh
 
 EXPOSE 3306
 
-CMD [ "bash", "script.sh" ]
-# CMD [ "sleep", "infinity" ]
-# CMD ["mysqld", "--user=mysql", "--console"]
+ENTRYPOINT [ "bash", "script.sh" ]
+
+CMD ["/usr/bin/mysqld", "--skip-log-error"]
