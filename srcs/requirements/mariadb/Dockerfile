@@ -12,7 +12,7 @@ RUN chmod +x script.sh
 # RUN service mariadb start
 # RUN bash script.sh
 
-EXPOSE 3306
+# EXPOSE 3306
 
 ENTRYPOINT [ "bash", "script.sh" ]
 
