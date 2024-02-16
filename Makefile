@@ -9,5 +9,8 @@ run :
 stop :
 	docker-compose -f srcs/docker-compose.yml down
 
+fclean :
+	docker system prune -a
+
 .phony : build run stop
 

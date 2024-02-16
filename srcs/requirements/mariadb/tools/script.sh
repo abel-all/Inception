@@ -1,25 +1,20 @@
 #!/bin/bash
 
-db_name=wordpressdb
-db_user=abelwb
-db_pwd=a123
+mysql_install_db --user=mysql --ldata=/var/lib/mysql
 
-# mariadb start
 service mariadb start
 
 # Make sure that NOBODY can access the server without a password
-mariadb -e "UPDATE mysql.user SET Password = PASSWORD('1234') WHERE User = 'root'"
+mariadb -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '123';"
+# sudo mariadbd --user=root --password=123
 
-# And then we need to kill the anonymous users
-mariadb -e "DROP USER ''@'localhost'"
+mariadb -h localhost -u root -p$MYSQL_ROOT_PASSWORD -e "CREATE DATABASE IF NOT EXISTS wpdb;"
 
-# Because our hostname varies we'll use some Bash magic here.
-mariadb -e "DROP USER ''@'$(hostname)'"
+mariadb -h localhost -u root -p$MYSQL_ROOT_PASSWORD -e "CREATE USER 'abel-all'@'%' IDENTIFIED BY '123'; GRANT ALL PRIVILEGES ON wpdb.* TO 'abel-all'@'%'; FLUSH PRIVILEGES;"
 
-# Kill off the demo database
-mariadb -e "DROP DATABASE test"
+# service mariadb stop
+mariadb-admin -p$MYSQL_ROOT_PASSWORD shutdown
 
-# Make our changes take effect
-mariadb -e "FLUSH PRIVILEGES"
-
+mariadbd
 # sleep infinity
+# exec "$@"

@@ -1,15 +1,13 @@
-version: "3.5"
+version: "3.8"
 
 volumes:
  wordpress:
-  name: wordpress
   driver: local
   driver_opts:
    o: bind
    type: none
    device: /home/abel-all/data/wordpress
  mariadb:
-  name: mariadb
   driver: local
   driver_opts:
    o: bind
@@ -18,45 +16,64 @@ volumes:
 
 networks:
  inception:
-  driver: bridge
+  name: inception
 
 services:
- nginx:
-  container_name: nginx
-  build: ./requirements/nginx/.
-  ports:
-   - "443:443"
-  depends_on:
-   - wordpress
-  volumes:
-   - wordpress:/var/www/html
-  networks:
-   - inception
-  restart: always
  wordpress:
   container_name: wordpress
   build: ./requirements/wordpress/.
   ports:
-   - "9000:9000"
+   - 9000:9000
   volumes:
-   - wordpress:/var/www/html
+   - wordpress:/var/www/html/wordpress
   networks:
    - inception
   depends_on:
    - mariadb
+  image: wordpress
   env_file:
    - .env
   restart: always
+  # environment:
+  #  - MYSQL_ROOT_PASSWORD="${MYSQL_ROOT_PASSWORD}"
+  #  - MYSQL_DATABASE="${MYSQL_DATABASE}"
+  #  - MYSQL_USER="${MYSQL_USER}"
+  #  - MYSQL_PASSWORD="${MYSQL_PASSWORD}"
+  #  - WORDPRESS_DB_HOST="${WORDPRESS_DB_HOST}"
+  #  - WORDPRESS_DB_PASSWORD="${WORDPRESS_DB_PASSWORD}"
+  #  - WORDPRESS_DB_NAME="${WORDPRESS_DB_NAME}"
+  #  - WORDPRESS_TABLE_PREFIX="${WORDPRESS_TABLE_PREFIX}"
  mariadb:
   container_name: mariadb
   build: ./requirements/mariadb/.
-  # ports:
-  #  - "3306:3306"
   volumes:
-   - mariadb:/var/lib/mysql
+   - mariadb:/var/lib/mysql/
+  networks:
+   - inception
+  ports:
+   - 3306:3306
+  image: mariadb
+  env_file:
+   - .env
+  restart: always
+  # environment:
+  #  - MYSQL_ROOT_PASSWORD="${MYSQL_ROOT_PASSWORD}"
+  #  - MYSQL_DATABASE="${MYSQL_DATABASE}"
+  #  - MYSQL_USER="${MYSQL_USER}"
+  #  - MYSQL_PASSWORD="${MYSQL_PASSWORD}"
+ nginx:
+  container_name: nginx
+  build: ./requirements/nginx/.
+  ports:
+   - 443:443
+  depends_on:
+   - wordpress
+  volumes:
+   - wordpress:/var/www/html/wordpress
   networks:
    - inception
   env_file:
    - .env
+  image: nginx
   restart: always
 
