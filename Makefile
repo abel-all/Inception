@@ -6,11 +6,11 @@ build :
 run :
 	docker-compose -f srcs/docker-compose.yml up
 
-stop :
+down :
 	docker-compose -f srcs/docker-compose.yml down
 
 fclean :
 	docker system prune -a
 
-.phony : build run stop
+.phony : build run down
 

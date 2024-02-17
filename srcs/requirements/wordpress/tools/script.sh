@@ -2,16 +2,7 @@
 
 sleep 10
 
-# create directory to use in nginx container later and also to setup the wordpress conf
-# chown -R www-data:www-data /var/www/html/wordpress
-
-mkdir -p run/php
-
-# touch run/php/php7.4-fpm.sock
-
-# chown -R www-data:www-data run/php/
-
-# chmod 660 run/php/php7.4-fpm.sock
+mkdir run/php
 
 cd /var/www/html/wordpress
 # downloads the latest version of WordPress to the current directory. The --allow-root flag allows the command to be run as the root user, which is necessary if you are logged in as the root user or if you are using WP-CLI with a system-level installation of WordPress.
