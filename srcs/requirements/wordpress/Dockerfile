@@ -1,7 +1,7 @@
 FROM debian:bullseye
 
-RUN apt-get update
-RUN apt-get install -y php7.4 php7.4-fpm php7.4-mysql mariadb-client curl
+RUN apt update
+RUN apt install -y iputils-ping php7.4 php7.4-fpm php7.4-mysql mariadb-client curl
 
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 RUN chmod +x wp-cli.phar
@@ -11,6 +11,4 @@ RUN sed -i "s|listen = /run/php/php7.4-fpm.sock|listen = wordpress:9000|g"	/etc/
 COPY tools/script.sh .
 RUN chmod +x script.sh
 
-ENTRYPOINT ["bash", "script.sh"]
-
-CMD [ "php-fpm7.4", "-F" ]
+CMD ["bash", "script.sh"]
