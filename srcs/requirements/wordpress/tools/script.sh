@@ -1,4 +1,3 @@
-#!/bin/bash
 
 while ! ping -c 1 mariadb; do sleep 1; done
 
@@ -14,10 +13,7 @@ sed -i "s/username_here/$MYSQL_USER/g"	wp-config.php
 sed -i "s/password_here/$MYSQL_PASSWORD/g"	wp-config.php
 sed -i "s/localhost/$WORDPRESS_DB_HOST/g"	wp-config.php
 
-
-wp config set SERVER_PORT 3306 --allow-root
-
-wp core install --url=$DOMAIN_NAME --title=abel --admin_user=$MYSQL_USER --admin_password=$MYSQL_PASSWORD --admin_email=$WP_EMAIL --allow-root
+wp core install --url=$DOMAIN_NAME --title=inception --admin_user=$MYSQL_USER --admin_password=$MYSQL_PASSWORD --admin_email=$WP_EMAIL --allow-root
 
 wp user create abel abel@gmail.com --role=author --user_pass=123 --allow-root
 

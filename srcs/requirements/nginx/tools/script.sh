@@ -1,4 +1,3 @@
-#!/bin/bash
 
 mkdir /etc/nginx/ssl
 
@@ -9,6 +8,7 @@ echo "events {
 }
 
 http {
+    include    /etc/nginx/mime.types;
     server {
     listen 443 ssl;
     server_name $DOMAIN_NAME;

@@ -6,6 +6,4 @@ RUN apt install openssl -y
 
 COPY tools/script.sh .
 
-RUN chmod +x script.sh
-
-CMD [ "bash", "script.sh" ]
+CMD bash script.sh

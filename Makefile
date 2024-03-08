@@ -11,6 +11,3 @@ down :
 
 fclean :
 	docker system prune -a
-
-.phony : build run down
-
